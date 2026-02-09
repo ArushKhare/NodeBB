@@ -165,6 +165,30 @@ topicsAPI.unlock = async function (caller, data) {
 	});
 };
 
+topicsAPI.markAsQuestion = async function (caller, data) {
+	await doTopicAction('markAsQuestion', 'event:topic_marked_question', caller, {
+		tids: data.tids,
+	});
+};
+
+topicsAPI.unmarkAsQuestion = async function (caller, data) {
+	await doTopicAction('unmarkAsQuestion', 'event:topic_unmarked_question', caller, {
+		tids: data.tids,
+	});
+};
+
+topicsAPI.markAnswered = async function (caller, data) {
+	await doTopicAction('markAnswered', 'event:topic_answered', caller, {
+		tids: data.tids,
+	});
+};
+
+topicsAPI.markUnanswered = async function (caller, data) {
+	await doTopicAction('markUnanswered', 'event:topic_unanswered', caller, {
+		tids: data.tids,
+	});
+};
+
 topicsAPI.follow = async function (caller, data) {
 	await topics.follow(data.tid, caller.uid);
 };
